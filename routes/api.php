@@ -25,14 +25,21 @@ Route::post('/login/email',[AuthController::class,'emailLogin']);
 Route::post('/register/email',[AuthController::class,'emailRegister']);
 
 Route::get('/genders',[APIGenderController::class,'index']);
-Route::get('/ad',[APISearchAdController::class,'index']);
-Route::get('/ad_get',[APIGetAdController::class,'index']);
+
+
+Route::middleware('auth.optional')->group(function (){
+    Route::get('/ad',[APISearchAdController::class,'index']);
+    Route::get('/ad/{ad}',[APISearchAdController::class,'show']);
+    Route::get('/ad_get',[APIGetAdController::class,'index']);
+    Route::get('/ad_get/{adGet}',[APIGetAdController::class,'show']);
+});
 
 Route::middleware('auth:sanctum')->group(function (){
    Route::get('/user', function (Request $request) {
        return $request->user();
    });
 
+   Route::get('/ad/{ad}/like',[APISearchAdController::class,'like']);
    Route::post('/user/profile/update',[APIUserController::class,'update']);
 
 

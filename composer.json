@@ -8,6 +8,7 @@
         "php": "^8.1",
         "ext-simplexml": "*",
         "elasticsearch/elasticsearch": "^8.6",
+        "fruitcake/laravel-cors": "^3.0",
         "guzzlehttp/guzzle": "^7.5",
         "laravel/framework": "^9.19",
         "laravel/jetstream": "^2.12",

@@ -13,7 +13,16 @@ class APIGetAdController extends Controller
         return response()->json([
             'message' => 'Ad get',
             'data' => [
-                AdGet::with('media')->orderBy('created_at','desc')->paginate(5)
+                AdGet::with('user')->orderBy('created_at','desc')->paginate(5)
+            ]
+        ]);
+    }
+
+    public function show(AdGet $adGet){
+        return response()->json([
+            'message' => 'Ad get ' .$adGet->id,
+            'data' => [
+                $adGet->load(['user','liked_users','gender_type']),
             ]
         ]);
     }

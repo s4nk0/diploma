@@ -3,16 +3,19 @@
 namespace App\Models;
 
 use App\Traits\ElasticSearchable;
+use http\Env\Request;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Scout\Searchable;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use function GuzzleHttp\Promise\all;
 
 class Ad extends Model implements HasMedia
 {
@@ -49,7 +52,16 @@ class Ad extends Model implements HasMedia
 
     protected $appends = [
         'createdAtDiffForHumans',
+        'user_liked'
     ];
+
+    public function getUserLikedAttribute(){
+
+        if (Auth::check()){
+            return (bool)$this->liked_users()->where('user_id', Auth::user()->id)->where('ad_id', $this->id)->first();
+        }
+        return false;
+    }
 
     public function getCreatedAtDiffForHumansAttribute()
     {
