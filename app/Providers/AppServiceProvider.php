@@ -53,7 +53,7 @@ class AppServiceProvider extends ServiceProvider
             return ClientBuilder::create()
                 ->setHosts($app['config']->get('services.search.hosts'))
                 ->setBasicAuthentication(env('ELASTICSEARCH_USERNAME'),env('ELASTICSEARCH_PASSWORD'))
-                ->setCABundle('C:\Users\Intel\Desktop\http_ca.crt')
+                ->setCABundle(env('ELASTICSEARCH_CA_BUNDLE_PATH'))
                 ->build();
         });
     }

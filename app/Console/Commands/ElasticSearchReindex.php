@@ -44,7 +44,6 @@ class ElasticSearchReindex extends Command
 
         foreach (Ad::cursor() as $data)
         {
-
             $this->elasticsearch->index([
                 'index' => $data->getSearchIndex(),
                 'type' => $data->getSearchType(),
@@ -62,6 +61,7 @@ class ElasticSearchReindex extends Command
 
         foreach (AdGet::cursor() as $data)
         {
+
             $this->elasticsearch->index([
                 'index' => $data->getSearchIndex(),
                 'type' => $data->getSearchType(),

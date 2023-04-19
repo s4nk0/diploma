@@ -57,6 +57,8 @@ class AdGet extends Model
     public function toSearchableArray(): array
     {
         return [
+            'city_id'=>$this->city_id,
+            'ad_gender_type_id'=> $this->ad_gender_type_id,
             'contact_name'=>$this->contact_name,
             'phone_number'=>$this->phone_number,
             'contact_email'=>$this->contact_email,

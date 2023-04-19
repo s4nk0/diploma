@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Ad;
 use App\Models\AdGenderType;
+use App\Models\AdGet;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -40,6 +41,7 @@ class DatabaseSeeder extends Seeder
             AdGenderTypeSeeder::class,
             GenderSeeder::class,
             AdSeeder::class,
+            AdGetSeeder::class,
         ]);
     }
 }

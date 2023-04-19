@@ -64,7 +64,7 @@ class SearchController extends Controller
 
         $search_ad = (@$_GET['category'] == 'search_ad' || @$_GET['category']===null) ? collect($searchRepository->search($search,$filters)) : collect([]);
 
-        $get_ad = (@$_GET['category'] == 'get_ad' || @$_GET['category']===null) ? collect($adGetSearchRepository->search($search)) : collect([]);
+        $get_ad = (@$_GET['category'] == 'get_ad' || @$_GET['category']===null) ? collect($adGetSearchRepository->search($search,$filters)) : collect([]);
         $result = $search_ad->merge($get_ad);
 
         $result_count = $result->count();

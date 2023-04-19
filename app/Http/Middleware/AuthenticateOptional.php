@@ -20,7 +20,11 @@ class AuthenticateOptional
     public function handle($request, Closure $next, ...$guards)
     {
         if ($token = $request->bearerToken()) {
-            $user = PersonalAccessToken::findToken($token)->tokenable()->first();
+            $user = PersonalAccessToken::findToken($token);
+            if(!$user){
+                return $next($request);
+            }
+            $user = $user->tokenable()->first();
             if ($user){
                 Auth::login($user);
             }
@@ -29,10 +33,4 @@ class AuthenticateOptional
         return $next($request);
     }
 
-    protected function unauthenticated($request, array $guards)
-    {
-        throw new AuthenticationException(
-            'Unauthenticated.', $guards, $this->redirectTo($request)
-        );
-    }
 }

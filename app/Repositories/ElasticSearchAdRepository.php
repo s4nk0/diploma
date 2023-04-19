@@ -32,6 +32,7 @@ class ElasticSearchAdRepository implements AdSearchRepository
         $model = new Ad;
 
         $elasticQuery = [
+                'index' => $model->getSearchIndex(),
                 'type' => $model->getSearchType(),
                 'body' => [
                     "size"=> 500,
