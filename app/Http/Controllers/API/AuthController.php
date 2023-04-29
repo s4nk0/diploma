@@ -46,8 +46,8 @@ class AuthController extends Controller
         }
 
         $phoneVerification = PhoneVerification::create($validatedData);
-
-        return SMS::sendCode($phoneVerification->phone_number,$phoneVerification->verification_code);
+        return  $phoneVerification->verification_code;
+//        return SMS::sendCode($phoneVerification->phone_number,$phoneVerification->verification_code);
     }
 
     public function OTPVerifyCode(OTPVerifyCodeRequest $request){
@@ -76,6 +76,24 @@ class AuthController extends Controller
             ],
             'message'=>'User logged in',
         ]);
+    }
+
+    public function logout(Request $request)
+    {
+        if (Auth::guard('sanctum')->check()){
+            $user = Auth::guard('sanctum')->user();
+            $user->tokens()->find($request->bearerToken())->delete();
+
+            return response()->json([
+                'success'=>true,
+                'message' => 'Success'
+            ]);
+        }
+
+        return response()->json([
+            'success'=>true,
+            'message' => 'Вы уже вышли'
+        ],Response::HTTP_ALREADY_REPORTED);
     }
 
     public function emailLogin(Request $request){

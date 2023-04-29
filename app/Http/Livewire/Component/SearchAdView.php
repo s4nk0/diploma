@@ -17,8 +17,8 @@ class SearchAdView extends Component
 
 
     public function mount(){
-        $this->ad = Ad::where('city_id', $_COOKIE[CookieNames::SelectedCity->value])->orderBy('created_at','desc')->union(
-            Ad::where('city_id', '!=', $_COOKIE[CookieNames::SelectedCity->value])->orderBy('created_at','desc')
+        $this->ad = Ad::where('city_id',( @$_COOKIE[CookieNames::SelectedCity->value]) ? $_COOKIE[CookieNames::SelectedCity->value] : 1)->orderBy('created_at','desc')->union(
+            Ad::where('city_id', '!=', ( @$_COOKIE[CookieNames::SelectedCity->value]) ? $_COOKIE[CookieNames::SelectedCity->value] : 1)->orderBy('created_at','desc')
         )->skip(0)->take($this->take)->get();
 
 

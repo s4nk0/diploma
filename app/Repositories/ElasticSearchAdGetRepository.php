@@ -86,7 +86,7 @@ class ElasticSearchAdGetRepository implements AdGetSearchRepository {
                             [
                                 'term'=>[
                                     'city_id'=>[
-                                        'value'=>$_COOKIE[CookieNames::SelectedCity->value]
+                                        'value'=>(@$_COOKIE[CookieNames::SelectedCity->value]) ?: 1
                                     ],
                                 ]
                             ]

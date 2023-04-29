@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\API\ApiAdGenderTypeController;
+use App\Http\Controllers\API\ApiCityController;
 use App\Http\Controllers\API\APIGenderController;
 use App\Http\Controllers\API\APIGetAdController;
 use App\Http\Controllers\API\APISearchAdController;
+use App\Http\Controllers\API\ApiSearchController;
 use App\Http\Controllers\API\APIUserController;
 use App\Http\Controllers\API\AuthController;
 use Illuminate\Http\Request;
@@ -22,7 +25,11 @@ use Illuminate\Support\Facades\Route;
 Route::post('OTPSendCode',[AuthController::class,'OTPSendCode']);
 Route::post('OTPVerifyCode',[AuthController::class,'OTPVerifyCode']);
 Route::post('/login/email',[AuthController::class,'emailLogin']);
+Route::post('/logout',[AuthController::class,'logout']);
 Route::post('/register/email',[AuthController::class,'emailRegister']);
+Route::get('/search',[ApiSearchController::class,'search']);
+Route::get('/ad_gender_types',[ApiAdGenderTypeController::class,'index']);
+Route::get('/cities',[ApiCityController::class,'index']);
 
 Route::get('/genders',[APIGenderController::class,'index']);
 

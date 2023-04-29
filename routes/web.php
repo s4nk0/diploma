@@ -1,6 +1,9 @@
 <?php
 
+use App\Enums\RolesEnum;
 use App\Facades\SMS;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\User\UserAddController;
 use App\Http\Controllers\User\UserGetAdController;
@@ -41,6 +44,11 @@ Route::middleware([
 
     Route::name('user.')->prefix('user')->group(function (){
         Route::get('liked',[UserLikedAdController::class,'index'])->name('liked');
+    });
+
+    Route::name('admin.')->prefix('admin')->middleware(['role:'.RolesEnum::Admin->value])->group(function (){
+        Route::get('/',[AdminController::class,'index'])->name('liked');
+        Route::resource('user',AdminUserController::class);
     });
 });
 

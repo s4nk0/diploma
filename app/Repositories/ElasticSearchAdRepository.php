@@ -87,7 +87,7 @@ class ElasticSearchAdRepository implements AdSearchRepository
                                 ],
                                 [
                                     'term'=>[
-                                        'city_id'=>$_COOKIE[CookieNames::SelectedCity->value],
+                                        'city_id'=>(@$_COOKIE[CookieNames::SelectedCity->value]) ?: 1,
                                     ]
                                 ]
                             ],
