@@ -8,8 +8,10 @@
             <!--begin::Card header-->
             <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
                 <!--begin::Card title-->
-                <div class="card-title m-0">
+                <div class="card-title m-0 d-flex justify-content-between w-100">
                     <h3 class="fw-bolder m-0">Edit user - {{$user->name}}</h3>
+
+
                 </div>
                 <!--end::Card title-->
             </div>
@@ -180,8 +182,10 @@
                     </div>
                     <!--end::Card body-->
                     <!--begin::Actions-->
-                    <div class="card-footer d-flex justify-content-end py-6 px-9">
-                        <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Create</button>
+                    <div class="card-footer d-flex justify-content-between py-6 px-9">
+                        <a href="{{route('admin.user.role',['user'=>$user])}}" class="btn btn-primary">Edit role</a>
+                        <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Submit</button>
+
                     </div>
                     <!--end::Actions-->
                     <input type="hidden"><div></div></form>

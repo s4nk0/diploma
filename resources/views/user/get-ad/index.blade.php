@@ -21,4 +21,6 @@
             <a href="{{route('user.get_ad.create')}}" class="list-group-item list-group-item-action">У вас нет обявлении нажмите чтобы добавить</a>
         @endif
     </div>
+        {{$adGet->links()}}
+
 </x-user.profile.layout>

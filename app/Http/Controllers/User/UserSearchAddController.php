@@ -35,7 +35,7 @@ class UserSearchAddController extends Controller
     public function index()
     {
 
-        $ad = Auth::user()->ad->paginate(5);
+        $ad = Auth::user()->ad()->paginate(5);
 
         return view('user.search-ad.index', compact('ad'));
     }

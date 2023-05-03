@@ -192,7 +192,7 @@
                                         <div class="card-body">
                                             <div class="card-title d-flex justify-content-between align-items-center">
                                                 <div>
-                                                    <div class="text-muted">Афтор объявление</div>
+                                                    <div class="text-muted">Автор объявление</div>
                                                     <span>{{$search_ad->contact_name}}</span>
                                                 </div>
                                                 <div>

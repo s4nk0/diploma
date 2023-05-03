@@ -24,7 +24,7 @@ class UserGetAdController extends Controller
 
     public function index()
     {
-        $adGet = Auth::user()->adGet;
+        $adGet = Auth::user()->adGet()->paginate(5);;
         return view('user.get-ad.index',compact('adGet'));
     }
 

@@ -3,6 +3,7 @@
 use App\Enums\RolesEnum;
 use App\Facades\SMS;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminRoleController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\User\UserAddController;
@@ -49,6 +50,12 @@ Route::middleware([
     Route::name('admin.')->prefix('admin')->middleware(['role:'.RolesEnum::Admin->value])->group(function (){
         Route::get('/',[AdminController::class,'index'])->name('liked');
         Route::resource('user',AdminUserController::class);
+        Route::get('/user/{user}/search_ad',[AdminUserController::class,'search_ad'])->name('user.search_ad');
+        Route::get('/user/{user}/get_ad',[AdminUserController::class,'get_ad'])->name('user.get_ad');
+        Route::get('/user/{user}/favorites',[AdminUserController::class,'favorites'])->name('user.favorites');
+
+        Route::get('/user/{user}/roles',[AdminUserController::class,'role'])->name('user.role');
+        Route::put('/user/{user}/roles',[AdminUserController::class,'updateUserRole'])->name('user.role.update');
     });
 });
 

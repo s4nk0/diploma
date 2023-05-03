@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
+            GenderSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
             ApartmentConditionSeeder::class,
@@ -39,7 +40,7 @@ class DatabaseSeeder extends Seeder
             ApartmentSecuritySeeder::class,
             WindowDirectionSeeder::class,
             AdGenderTypeSeeder::class,
-            GenderSeeder::class,
+
             AdSeeder::class,
             AdGetSeeder::class,
         ]);

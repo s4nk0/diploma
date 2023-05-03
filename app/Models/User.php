@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Laravel\Scout\Searchable;
 
 class User extends Authenticatable
 {
@@ -19,7 +20,7 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
     use SoftDeletes;
-
+    use Searchable;
     /**
      * The attributes that are mass assignable.
      *
@@ -103,5 +104,14 @@ class User extends Authenticatable
 
     public function hasRoles($roles){
         return count(array_intersect($roles,$this->roles->pluck('title')->toArray()));
+    }
+
+    public function toSearchableArray(): array
+    {
+        return [
+            'name'=>$this->name,
+            'phone_number'=>$this->phone_number,
+            'email'=>$this->email,
+        ];
     }
 }
