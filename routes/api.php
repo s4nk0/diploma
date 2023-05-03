@@ -27,9 +27,10 @@ Route::post('OTPVerifyCode',[AuthController::class,'OTPVerifyCode']);
 Route::post('/login/email',[AuthController::class,'emailLogin']);
 Route::post('/logout',[AuthController::class,'logout']);
 Route::post('/register/email',[AuthController::class,'emailRegister']);
-Route::get('/search',[ApiSearchController::class,'search']);
+Route::get('/search/{search?}',[ApiSearchController::class,'search']);
 Route::get('/ad_gender_types',[ApiAdGenderTypeController::class,'index']);
 Route::get('/cities',[ApiCityController::class,'index']);
+Route::get('/search_ad/relations',[APISearchAdController::class,'relationDates']);
 
 Route::get('/genders',[APIGenderController::class,'index']);
 
@@ -47,7 +48,18 @@ Route::middleware('auth:sanctum')->group(function (){
    });
 
    Route::get('/ad/{ad}/like',[APISearchAdController::class,'like']);
+   Route::get('/user/liked',[APIUserController::class,'userLiked']);
    Route::post('/user/profile/update',[APIUserController::class,'update']);
+
+   Route::post('/user/search_ad/store',[APISearchAdController::class,'store']);
+   Route::post('/user/search_ad/{search_ad}/update',[APISearchAdController::class,'update']);
+   Route::post('/user/search_ad/{search_ad}/delete',[APISearchAdController::class,'destroy']);
+   Route::get('/user/search_ad',[APIUserController::class,'userSearchAd']);
+
+   Route::post('/user/get_ad/store',[APIGetAdController::class,'store']);
+   Route::post('/user/get_ad/{get_ad}/update',[APIGetAdController::class,'update']);
+   Route::post('/user/get_ad/{get_ad}/delete',[APIGetAdController::class,'destroy']);
+   Route::get('/user/get_ad',[APIUserController::class,'userGetAd']);
 
 
 });

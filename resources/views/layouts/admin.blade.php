@@ -161,9 +161,9 @@ License: For each use you must have a valid license purchased only from above li
                     <!--end::Aside mobile toggle-->
                     <!--begin::Mobile logo-->
                     <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-                        <a href="../../demo1/dist/index.html" class="d-lg-none">
-                            <img alt="Logo" src="{{asset("adminFiles/assets/media/logos/logo-2.svg")}}" class="h-30px" />
-                        </a>
+{{--                        <a href="../../demo1/dist/index.html" class="d-lg-none">--}}
+{{--                            <img alt="Logo" src="{{asset("adminFiles/assets/media/logos/logo-2.svg")}}" class="h-30px" />--}}
+{{--                        </a>--}}
                     </div>
                     <!--end::Mobile logo-->
                     <!--begin::Wrapper-->
@@ -207,7 +207,7 @@ License: For each use you must have a valid license purchased only from above li
             <!--begin::Content-->
             <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
                 <div class="post d-flex flex-column-fluid" id="kt_post">
-                    <div id="kt_content_container" class="container-xxl">
+                    <div id="kt_content_container" class="container-xxl mt-5">
                         {{$slot}}
                     </div>
                 </div>

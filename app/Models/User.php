@@ -93,6 +93,10 @@ class User extends Authenticatable
         return $this->hasMany(AdGet::class);
     }
 
+    public function gender(){
+        return $this->hasOne(Gender::class,'id','gender_id');
+    }
+
     public function roles(){
         return $this->belongsToMany(Role::class);
     }

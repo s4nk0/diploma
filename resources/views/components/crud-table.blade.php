@@ -1,8 +1,8 @@
-<div class="card card-xl-stretch mb-5 mb-xl-8 py-5">
+<div class="card card-xl-stretch mb-5 mb-xl-8 py-5 mt-3">
 @isset($header)
 
     <!--begin::Header-->
-        <div class="card-header border-0 pt-5">
+        <div class="card-header d-block border-0 pt-5">
             <h3 class="card-title align-items-start flex-column">
                 <span class="card-label fw-bolder fs-3 mb-1">{{$header}}</span>
                 {{--            <span class="text-muted mt-1 fw-bold fs-7">Over 500 members</span>--}}

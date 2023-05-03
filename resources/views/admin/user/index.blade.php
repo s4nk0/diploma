@@ -1,18 +1,26 @@
 <x-admin-layout>
     <x-crud-table header="Users">
         <x-slot name="header_button">
-            <input type="text" class="form-control form-control-solid" wire:model="search" placeholder="Search...">
-            <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="" data-bs-original-title="Click to add a user">
-                <a href="#" onclick="Livewire.emit('openModal', 'admin.user.create.modal')" class="btn btn-sm btn-light btn-active-primary">
-                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-                    <span class="svg-icon svg-icon-3">
+            <div class="row justify-content-between align-items-center ">
+                <div class="col-sm-9">
+                    <input type="text" class="form-control form-control-solid" wire:model="search" placeholder="Search...">
+                </div>
+                <div class="col-sm-3">
+                    <div class="card-toolbar justify-content-end" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="" data-bs-original-title="Click to add a user">
+                        <a href="{{route('admin.user.create')}}" class="btn btn-sm btn-light btn-active-primary">
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+                            <span class="svg-icon svg-icon-3">
                                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                                                                     <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black"></rect>
                                                                                     <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black"></rect>
                                                                                 </svg>
                                                                             </span>
-                    <!--end::Svg Icon-->New Member</a>
+                            <!--end::Svg Icon-->New Member</a>
+                    </div>
+                </div>
             </div>
+
+
         </x-slot>
 
         <thead>
@@ -38,6 +46,7 @@
                         </div>
                     </td>
                     <td>
+                        <a href="{{route('admin.user.show',['user'=>$data])}}">
                         <div class="d-flex align-items-center">
                             <div class="symbol symbol-45px me-5">
                                 <img src="{{ $data->profile_photo_url }}" alt="{{ $data->name }}" >
@@ -46,13 +55,14 @@
                                 {{ $data->name }}
                             </div>
                         </div>
+                        </a>
                     </td>
 
                     <td>{{$data->phone_number}}</td>
                     <td>{{$data->email}}</td>
                     <td>
                         <div class="d-flex justify-content-end flex-shrink-0">
-                            <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                            <a href="{{route('admin.user.edit',['user'=>$data])}}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                 <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                 <span class="svg-icon svg-icon-3">
 																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -62,17 +72,19 @@
 																			</span>
                                 <!--end::Svg Icon-->
                             </a>
-                            <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
-                                <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
-                                <span class="svg-icon svg-icon-3">
+                            <form action="{{route('admin.user.destroy',['user'=>$data])}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">      <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
+                                    <span class="svg-icon svg-icon-3">
 																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 																					<path d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z" fill="black"></path>
 																					<path opacity="0.5" d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z" fill="black"></path>
 																					<path opacity="0.5" d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z" fill="black"></path>
 																				</svg>
-																			</span>
-                                <!--end::Svg Icon-->
-                            </a>
+																			</span></button>
+                            </form>
+
                         </div>
                     </td>
                 </tr>

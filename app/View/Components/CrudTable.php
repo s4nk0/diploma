@@ -6,14 +6,19 @@ use Illuminate\View\Component;
 
 class CrudTable extends Component
 {
+    public $header;
+    public $header_button;
+    public $pagination;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($header = null,$header_button = null,$pagination = null)
     {
-        //
+        $this->header = $header;
+        $this->header_button = $header_button;
+        $this->pagination = $pagination;
     }
 
     /**
