@@ -3,15 +3,17 @@
 namespace App\Models;
 
 use App\Traits\ElasticSearchable;
+use App\Traits\withModelTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Scout\Searchable;
 
 class AdGet extends Model
 {
-    use HasFactory, SoftDeletes, Searchable, ElasticSearchable;
+    use HasFactory, SoftDeletes, Searchable, ElasticSearchable, withModelTrait;
 
     protected $fillable = [
         'rooms_count',
@@ -28,18 +30,32 @@ class AdGet extends Model
         'phone_number',
         'contact_email',
         'price_from',
-        'views'
+        'views',
+        'status_moderation_id'
     ];
 
     protected $appends = [
         'createdAtDiffForHumans',
+        'user_liked'
     ];
+
+    public function getUserLikedAttribute(){
+
+        if (Auth::check()){
+            return (bool)$this->liked_users()->where('user_id', Auth::user()->id)->where('ad_get_id', $this->id)->first();
+        }
+        return false;
+    }
 
     public function getCreatedAtDiffForHumansAttribute()
     {
         Carbon::setLocale('ru');
         $date = Carbon::parse($this->created_at);
         return  $date->diffForHumans();
+    }
+
+    public function status_moderation(){
+        return $this->hasOne(StatusModeration::class,'id','status_moderation_id');
     }
 
     public function user(){

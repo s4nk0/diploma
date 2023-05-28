@@ -12,7 +12,7 @@
         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
             <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4 mb-3">
                 <!-- Profile Photo File Input -->
-                <input type="file" class="hidden"
+                <input type="file" hidden class="hidden"
                             wire:model="photo"
                             x-ref="photo"
                             x-on:change="
@@ -28,13 +28,13 @@
 
                 <!-- Current Profile Photo -->
                 <div class="mt-2" x-show="! photoPreview">
-                    <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
+                    <img style="height: 100px; width: 100px;" src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
                 </div>
 
                 <!-- New Profile Photo Preview -->
-                <div class="mt-2" x-show="photoPreview" style="display: none;">
-                    <span class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
-                          x-bind:style="'background-image: url(\'' + photoPreview + '\');'">
+                <div class="mt-2" x-show="photoPreview" style="display: none;height: 100px; width: 100px;">
+                    <span  class="d-block rounded bg-cover bg-no-repeat bg-center w-100 h-100"
+                          x-bind:style="'background: round;background-image: url(\'' + photoPreview + '\'); '">
                     </span>
                 </div>
 
@@ -90,7 +90,7 @@
                 <p class="text-sm mt-2">
                     {{ __('Your email address is unverified.') }}
 
-                    <button type="button" class="underline text-sm text-gray-600 hover:text-gray-900" wire:click.prevent="sendEmailVerification">
+                    <button type="button" class="btn btn-outline-orange" wire:click.prevent="sendEmailVerification">
                         {{ __('Click here to re-send the verification email.') }}
                     </button>
                 </p>

@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\Ad;
+use App\Models\AdGet;
 use App\Models\PhoneVerification;
 use App\Models\User;
+use App\Observers\AdGetObserver;
+use App\Observers\AdObserver;
 use App\Observers\PhoneVerificationObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
@@ -33,6 +37,8 @@ class EventServiceProvider extends ServiceProvider
     {
         PhoneVerification::observe(PhoneVerificationObserver::class);
         User::observe(UserObserver::class);
+        Ad::observe(AdObserver::class);
+        AdGet::observe(AdGetObserver::class);
     }
 
     /**

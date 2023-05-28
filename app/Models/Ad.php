@@ -3,7 +3,8 @@
 namespace App\Models;
 
 use App\Traits\ElasticSearchable;
-use http\Env\Request;
+use App\Traits\ModerationTrait;
+use App\Traits\withModelTrait;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -19,7 +20,7 @@ use function GuzzleHttp\Promise\all;
 
 class Ad extends Model implements HasMedia
 {
-    use HasFactory, SoftDeletes, InteractsWithMedia, Searchable, ElasticSearchable;
+    use HasFactory, SoftDeletes, InteractsWithMedia, Searchable, ElasticSearchable, withModelTrait, ModerationTrait;
 
     protected $fillable = [
         'user_id',
@@ -47,13 +48,19 @@ class Ad extends Model implements HasMedia
         'contact_name',
         'contact_email',
         'phone_number',
-        'views'
+        'views',
+        'status_moderation_id',
     ];
 
     protected $appends = [
         'createdAtDiffForHumans',
         'user_liked'
     ];
+
+    protected $with = [
+        'media',
+    ];
+
 
     public function getUserLikedAttribute(){
 
@@ -74,6 +81,10 @@ class Ad extends Model implements HasMedia
 
     public function user(){
         return $this->hasOne(User::class,'id','user_id');
+    }
+
+    public function status_moderation(){
+        return $this->hasOne(StatusModeration::class,'id','status_moderation_id');
     }
 
     public function apartment_condition(){

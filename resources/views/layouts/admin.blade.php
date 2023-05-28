@@ -73,6 +73,132 @@ License: For each use you must have a valid license purchased only from above li
                             </a>
                         </div>
 
+                        <div class="menu-item">
+                            <div class="menu-content pt-8 pb-2">
+                                <span class="menu-section text-muted text-uppercase fs-8 ls-1">Ad settings</span>
+                            </div>
+                        </div>
+
+                        <div class="menu-item {{ Request::routeIs('admin.apartmentCondition.*') ? 'here show' : '' }}  menu-accordion">
+                            <a href="{{route('admin.apartmentCondition.index')}}" class="menu-link">
+										<span class="menu-icon">
+											<!--begin::Svg Icon | path: icons/duotune/communication/com013.svg")}}-->
+                                            <span class="svg-icon svg-icon-2"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo8/dist/../src/media/svg/icons/Tools/Roller.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24"/>
+                                                    <rect fill="#000000" x="3" y="2" width="15" height="5" rx="1"/>
+                                                    <rect fill="#000000" x="9" y="12" width="4" height="10" rx="1"/>
+                                                    <path d="M12,12 L10,12 L10,11 C10,9.8954305 10.8954305,9 12,9 L19,9 L19,5.5 L18,5.5 L18,3.5 L19,3.5 C20.1045695,3.5 21,4.3954305 21,5.5 L21,9 C21,10.1045695 20.1045695,11 19,11 L12,11 L12,12 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                                </g>
+                                            </svg><!--end::Svg Icon--></span>
+                                            <!--end::Svg Icon-->
+										</span>
+                                <span class="menu-title">Apartment conditions</span>
+                            </a>
+                        </div>
+
+                        <div class="menu-item {{ Request::routeIs('admin.adGenderType.*') ? 'here show' : '' }}  menu-accordion">
+                            <a href="{{route('admin.adGenderType.index')}}" class="menu-link">
+										<span class="menu-icon">
+											<!--begin::Svg Icon | path: icons/duotune/communication/com013.svg")}}-->
+                                            <span class="svg-icon svg-icon-2"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo8/dist/../src/media/svg/icons/Communication/Group.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <polygon points="0 0 24 0 24 24 0 24"/>
+                                                <path d="M18,14 C16.3431458,14 15,12.6568542 15,11 C15,9.34314575 16.3431458,8 18,8 C19.6568542,8 21,9.34314575 21,11 C21,12.6568542 19.6568542,14 18,14 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                                <path d="M17.6011961,15.0006174 C21.0077043,15.0378534 23.7891749,16.7601418 23.9984937,20.4 C24.0069246,20.5466056 23.9984937,21 23.4559499,21 L19.6,21 C19.6,18.7490654 18.8562935,16.6718327 17.6011961,15.0006174 Z M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero"/>
+                                            </g>
+                                        </svg><!--end::Svg Icon--></span>
+                                            <!--end::Svg Icon-->
+										</span>
+                                <span class="menu-title">Ad gender types</span>
+                            </a>
+                        </div>
+
+                        <div class="menu-item {{ Request::routeIs('admin.apartmentFurnitureStatus.*') ? 'here show' : '' }}  menu-accordion">
+                            <a href="{{route('admin.apartmentFurnitureStatus.index')}}" class="menu-link">
+										<span class="menu-icon">
+											<!--begin::Svg Icon | path: icons/duotune/communication/com013.svg")}}-->
+                                            <span class="svg-icon svg-icon-2"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo8/dist/../src/media/svg/icons/Design/Brush.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24"/>
+                                                    <path d="M13.5,6 C13.33743,8.28571429 12.7799545,9.78571429 11.8275735,10.5 C11.8275735,10.5 12.5,4 10.5734853,2 C10.5734853,2 10.5734853,5.92857143 8.78777106,9.14285714 C7.95071887,10.6495511 7.00205677,12.1418252 7.00205677,14.1428571 C7.00205677,17 10.4697177,18 12.0049375,18 C13.8025422,18 17,17 17,13.5 C17,12.0608202 15.8333333,9.56082016 13.5,6 Z" fill="#000000"/>
+                                                    <path d="M9.72075922,20 L14.2792408,20 C14.7096712,20 15.09181,20.2754301 15.2279241,20.6837722 L16,23 L8,23 L8.77207592,20.6837722 C8.90818997,20.2754301 9.29032881,20 9.72075922,20 Z" fill="#000000" opacity="0.3"/>
+                                                </g>
+                                            </svg><!--end::Svg Icon--></span>
+                                            <!--end::Svg Icon-->
+										</span>
+                                <span class="menu-title">Apartment furniture status</span>
+                            </a>
+                        </div>
+
+                        <div class="menu-item {{ Request::routeIs('admin.apartmentFurniture.*') ? 'here show' : '' }}  menu-accordion">
+                            <a href="{{route('admin.apartmentFurniture.index')}}" class="menu-link">
+										<span class="menu-icon">
+											<!--begin::Svg Icon | path: icons/duotune/communication/com013.svg")}}-->
+
+                                            <span class="svg-icon svg-icon-2"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo8/dist/../src/media/svg/icons/Electric/Fridge.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24"/>
+                                                    <path d="M7,10 L7,16 C7,16.5522847 7.44771525,17 8,17 C8.55228475,17 9,16.5522847 9,16 L9,10 L19,10 L19,22 C19,22.5522847 18.5522847,23 18,23 L6,23 C5.44771525,23 5,22.5522847 5,22 L5,10 L7,10 Z M7,8 L5,8 L5,2 C5,1.44771525 5.44771525,1 6,1 L18,1 C18.5522847,1 19,1.44771525 19,2 L19,8 L9,8 L9,5 C9,4.44771525 8.55228475,4 8,4 C7.44771525,4 7,4.44771525 7,5 L7,8 Z" fill="#000000"/>
+                                                </g>
+                                            </svg><!--end::Svg Icon--></span>
+                                            <!--end::Svg Icon-->
+										</span>
+                                <span class="menu-title">Apartment furniture</span>
+                            </a>
+                        </div>
+
+                        <div class="menu-item {{ Request::routeIs('admin.apartmentFacility.*') ? 'here show' : '' }}  menu-accordion">
+                            <a href="{{route('admin.apartmentFacility.index')}}" class="menu-link">
+										<span class="menu-icon">
+											<!--begin::Svg Icon | path: icons/duotune/communication/com013.svg")}}-->
+                                            <span class="svg-icon svg-icon-2"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo8/dist/../src/media/svg/icons/Devices/Display3.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24"/>
+                                                    <polygon fill="#000000" opacity="0.3" points="5 7 5 15 19 15 19 7"/>
+                                                    <path d="M11,19 L11,16 C11,15.4477153 11.4477153,15 12,15 C12.5522847,15 13,15.4477153 13,16 L13,19 L14.5,19 C14.7761424,19 15,19.2238576 15,19.5 C15,19.7761424 14.7761424,20 14.5,20 L9.5,20 C9.22385763,20 9,19.7761424 9,19.5 C9,19.2238576 9.22385763,19 9.5,19 L11,19 Z" fill="#000000" opacity="0.3"/>
+                                                    <path d="M5,7 L5,15 L19,15 L19,7 L5,7 Z M5.25,5 L18.75,5 C19.9926407,5 21,5.8954305 21,7 L21,15 C21,16.1045695 19.9926407,17 18.75,17 L5.25,17 C4.00735931,17 3,16.1045695 3,15 L3,7 C3,5.8954305 4.00735931,5 5.25,5 Z" fill="#000000" fill-rule="nonzero"/>
+                                                </g>
+                                            </svg><!--end::Svg Icon--></span>
+                                            <!--end::Svg Icon-->
+										</span>
+                                <span class="menu-title">Apartment facilities</span>
+                            </a>
+                        </div>
+                        <div class="menu-item {{ Request::routeIs('admin.apartmentSecurity.*') ? 'here show' : '' }}  menu-accordion">
+                            <a href="{{route('admin.apartmentSecurity.index')}}" class="menu-link">
+										<span class="menu-icon">
+											<!--begin::Svg Icon | path: icons/duotune/communication/com013.svg")}}-->
+                                            <span class="svg-icon svg-icon-2"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo8/dist/../src/media/svg/icons/General/Shield-check.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24"/>
+                                                    <path d="M4,4 L11.6314229,2.5691082 C11.8750185,2.52343403 12.1249815,2.52343403 12.3685771,2.5691082 L20,4 L20,13.2830094 C20,16.2173861 18.4883464,18.9447835 16,20.5 L12.5299989,22.6687507 C12.2057287,22.8714196 11.7942713,22.8714196 11.4700011,22.6687507 L8,20.5 C5.51165358,18.9447835 4,16.2173861 4,13.2830094 L4,4 Z" fill="#000000" opacity="0.3"/>
+                                                    <path d="M11.1750002,14.75 C10.9354169,14.75 10.6958335,14.6541667 10.5041669,14.4625 L8.58750019,12.5458333 C8.20416686,12.1625 8.20416686,11.5875 8.58750019,11.2041667 C8.97083352,10.8208333 9.59375019,10.8208333 9.92916686,11.2041667 L11.1750002,12.45 L14.3375002,9.2875 C14.7208335,8.90416667 15.2958335,8.90416667 15.6791669,9.2875 C16.0625002,9.67083333 16.0625002,10.2458333 15.6791669,10.6291667 L11.8458335,14.4625 C11.6541669,14.6541667 11.4145835,14.75 11.1750002,14.75 Z" fill="#000000"/>
+                                                </g>
+                                            </svg><!--end::Svg Icon--></span>
+                                            <!--end::Svg Icon-->
+										</span>
+                                <span class="menu-title">Apartment security</span>
+                            </a>
+                        </div>
+
+                       <div class="menu-item {{ Request::routeIs('admin.apartmentFor.*') ? 'here show' : '' }}  menu-accordion">
+                                                <a href="{{route('admin.apartmentFor.index')}}" class="menu-link">
+                                                            <span class="menu-icon">
+                                                                <!--begin::Svg Icon | path: icons/duotune/communication/com013.svg")}}-->
+                                                                <span class="svg-icon svg-icon-2"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo8/dist/../src/media/svg/icons/Home/Fireplace.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                        <rect x="0" y="0" width="24" height="24"/>
+                                                                        <path d="M17,20 L17,12 C17,9.23857625 14.7614237,7 12,7 C9.23857625,7 7,9.23857625 7,12 L7,20 L5,20 C3.8954305,20 3,19.1045695 3,18 L3,6 C3,4.8954305 3.8954305,4 5,4 L19,4 C20.1045695,4 21,4.8954305 21,6 L21,18 C21,19.1045695 20.1045695,20 19,20 L17,20 Z" fill="#000000" opacity="0.3"/>
+                                                                        <path d="M12.9717525,11.7005668 C12.8097937,13.3201542 12.3239175,14.1866868 11.5141238,14.3001646 C11.5141238,14.3001646 12.2429381,11.4576287 11.2711857,10 C11.2711857,10 11.1681401,11.5618236 10.126941,13.4359819 C9.63887975,14.3144921 9.08474261,14.9067082 9.08474261,16.0734529 C9.08474261,17.7393714 10.7908674,18.6003292 12.002779,18.6003292 C13.2146906,18.6003292 14.9152574,18.0172577 14.9152574,15.9765075 C14.9152574,15.1373628 14.2674224,13.7120493 12.9717525,11.7005668 Z" fill="#000000"/>
+                                                                    </g>
+                                                                </svg><!--end::Svg Icon--></span>
+                                                                <!--end::Svg Icon-->
+                                                            </span>
+                                                    <span class="menu-title">Apartment for</span>
+                                                </a>
+                                            </div>
+
 {{--                        <div class="menu-item {{ Request::routeIs('admin.contents.audio.category') ? 'here show' : '' }}  menu-accordion">--}}
 {{--                            <a href="{{route('admin.contents.audio.category')}}" class="menu-link">--}}
 {{--										<span class="menu-icon">--}}

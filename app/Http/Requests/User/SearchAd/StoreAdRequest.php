@@ -63,7 +63,7 @@ class StoreAdRequest extends FormRequest
             'roommate_count'=>'required|integer',
             'windowDirections'=>'nullable',
             'windowDirections.*'=>'required|integer|exists:window_directions,id',
-            'apartmentFor_ids'=>'nullable',
+            'apartmentFor_ids'=>'nullable|array',
             'apartmentFor_ids.*'=>'required|integer|exists:apartment_for,id',
             'description'=>'nullable',
             'contact_name'=>'required|string',

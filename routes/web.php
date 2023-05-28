@@ -2,6 +2,13 @@
 
 use App\Enums\RolesEnum;
 use App\Facades\SMS;
+use App\Http\Controllers\Admin\AdminAdGenderTypeController;
+use App\Http\Controllers\Admin\AdminApartmentConditionController;
+use App\Http\Controllers\Admin\AdminApartmentFacilitiesController;
+use App\Http\Controllers\Admin\AdminApartmentForController;
+use App\Http\Controllers\Admin\AdminApartmentFurnitureController;
+use App\Http\Controllers\Admin\AdminApartmentFurnitureStatusController;
+use App\Http\Controllers\Admin\AdminApartmentSecurityController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminRoleController;
 use App\Http\Controllers\Admin\AdminUserController;
@@ -56,6 +63,15 @@ Route::middleware([
 
         Route::get('/user/{user}/roles',[AdminUserController::class,'role'])->name('user.role');
         Route::put('/user/{user}/roles',[AdminUserController::class,'updateUserRole'])->name('user.role.update');
+
+        Route::resource('apartmentCondition', AdminApartmentConditionController::class)->except(['show']);
+        Route::resource('adGenderType', AdminAdGenderTypeController::class)->except(['show']);
+        Route::resource('apartmentFurnitureStatus', AdminApartmentFurnitureStatusController::class)->except(['show']);
+        Route::resource('apartmentFurniture', AdminApartmentFurnitureController::class)->except(['show']);
+        Route::resource('apartmentFacility', AdminApartmentFacilitiesController::class)->except(['show']);
+        Route::resource('apartmentSecurity', AdminApartmentSecurityController::class)->except(['show']);
+        Route::resource('apartmentFor', AdminApartmentForController::class)->except(['show']);
+
     });
 });
 

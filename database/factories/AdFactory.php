@@ -40,6 +40,7 @@ class AdFactory extends Factory
         }
 
         return [
+            'status_moderation_id'=>1,
             'user_id'=>$this->faker->randomElement($users),
             'city_id'=>$this->faker->randomElement($cities),
             'apartment_condition_id'=>$this->faker->optional()->randomElement($apartmentConditions),

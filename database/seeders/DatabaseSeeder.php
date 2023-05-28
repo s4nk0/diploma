@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
             ApartmentSecuritySeeder::class,
             WindowDirectionSeeder::class,
             AdGenderTypeSeeder::class,
-
+            StatusModerationSeeder::class,
             AdSeeder::class,
             AdGetSeeder::class,
         ]);

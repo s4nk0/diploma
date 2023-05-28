@@ -83,16 +83,16 @@
                         </button>
                     </p>
                     <div class="collapse {{(
-                                        isset($_GET['roommate_count'])
-                                        || isset($_GET['bathrooms_count'])
-                                        || isset($_GET['balconies_count'])
-                                        || isset($_GET['loggias_count'])
-                                        || isset($_GET['floor'])
-                                        || isset($_GET['floor_from'])
-                                        || isset($_GET['square_general'])
-                                        || isset($_GET['square_living'])
-                                        || isset($_GET['square_kitchen'])
-                                        || isset($_GET['kitchen_studio'])
+                                        (isset($_GET['roommate_count']) && $_GET['roommate_count'] !== '')
+                                        || (isset($_GET['bathrooms_count']) && $_GET['bathrooms_count'] !== '')
+                                        || (isset($_GET['balconies_count']) && $_GET['balconies_count'] !== '')
+                                        || (isset($_GET['loggias_count']) && $_GET['loggias_count'] !== '')
+                                        || (isset($_GET['floor']) && $_GET['floor'] !== '')
+                                        || (isset($_GET['floor_from']) && $_GET['floor_from'] !== '')
+                                        || (isset($_GET['square_general']) && $_GET['square_general'] !== '')
+                                        || (isset($_GET['square_living']) && $_GET['square_living'] !== '')
+                                        || (isset($_GET['square_kitchen']) && $_GET['square_kitchen'] !== '')
+                                        || (isset($_GET['kitchen_studio']) && $_GET['kitchen_studio'] !== '')
                                         ) ? 'show' : ''}}"
                          id="additional">
                         <h6>Количество сожителей</h6>
@@ -258,7 +258,7 @@
                         </div>
                     </div>
                 @endforeach
-                {{$result->links()}}
+                {{$result->appends(request()->query())->links()}}
             @else
                 <small class="text-muted">Ничего не найдено</small>
             @endif

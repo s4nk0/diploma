@@ -23,7 +23,7 @@ class Index extends Component
 
     public function render()
     {
-        $users = User::search($this->search)->orderBy('created_at','desc')->paginate(10);
+        $users = User::search($this->search)->orderBy('created_at','desc')->paginate(5);
         return view('livewire.admin.user.index',compact('users'));
     }
 }

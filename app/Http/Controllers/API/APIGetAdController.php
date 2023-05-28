@@ -31,6 +31,20 @@ class APIGetAdController extends Controller
         ]);
     }
 
+    public function like(AdGet $get_ad){
+        if (!$get_ad->user_liked){
+            $get_ad->liked_users()->attach(Auth::user());
+            return response()->json([
+                'message' => 'Success attached',
+            ],Response::HTTP_ACCEPTED);
+        }else{
+            $get_ad->liked_users()->detach(Auth::user());
+            return response()->json([
+                'message' => 'Success detached',
+            ],Response::HTTP_ACCEPTED);
+        }
+    }
+
     public function store(StoreAdGetRequest $request)
     {
         $this->checkAccess('create',AdGet::class);

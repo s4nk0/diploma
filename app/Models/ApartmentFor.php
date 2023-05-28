@@ -11,4 +11,8 @@ class ApartmentFor extends Model
     use HasFactory, SoftDeletes;
 
     protected $table = 'apartment_for';
+
+    protected $fillable = [
+        'title'
+    ];
 }

@@ -30,6 +30,7 @@ class AdGetFactory extends Factory
         $lang = 43.23533174349779;
         $long = 76.94582796289055;
         return [
+            'status_moderation_id'=>1,
             'user_id'=>$this->faker->randomElement($users),
             'city_id'=>$this->faker->randomElement($cities),
             'ad_gender_type_id'=>$this->faker->optional()->randomElement($ad_gender_types),

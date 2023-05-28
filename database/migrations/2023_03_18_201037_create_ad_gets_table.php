@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('ad_gets', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('status_moderation_id')->nullable()->constrained('status_moderation')->nullOnDelete();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('city_id')->constrained('cities')->cascadeOnDelete();
             $table->foreignId('ad_gender_type_id')->nullable()->constrained('ad_gender_types')->nullOnDelete();

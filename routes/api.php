@@ -48,6 +48,7 @@ Route::middleware('auth:sanctum')->group(function (){
    });
 
    Route::get('/ad/{ad}/like',[APISearchAdController::class,'like']);
+    Route::get('/get_ad/{get_ad}/like',[APIGetAdController::class,'like']);
    Route::get('/user/liked',[APIUserController::class,'userLiked']);
    Route::post('/user/profile/update',[APIUserController::class,'update']);
 
@@ -59,6 +60,7 @@ Route::middleware('auth:sanctum')->group(function (){
    Route::post('/user/get_ad/store',[APIGetAdController::class,'store']);
    Route::post('/user/get_ad/{get_ad}/update',[APIGetAdController::class,'update']);
    Route::post('/user/get_ad/{get_ad}/delete',[APIGetAdController::class,'destroy']);
+
    Route::get('/user/get_ad',[APIUserController::class,'userGetAd']);
 
 

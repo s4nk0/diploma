@@ -100,7 +100,7 @@
                                     </p>
                                     <h5>Условия проживания</h5>
                                     <p class="card-text mb-3">
-                                        @if($search_ad->apartment_condition_id)
+                                        @if($search_ad->apartment_condition)
                                             Состояние квартиры: {{$search_ad->apartment_condition->title}} <br>
                                         @endif
 

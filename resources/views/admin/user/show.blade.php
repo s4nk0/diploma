@@ -35,6 +35,9 @@
                     <!--begin::Col-->
                     <div class="col-lg-8 fv-row">
                         <span class="fw-bold text-gray-800 fs-6">{{$user->email}}</span>
+                        @isset($user->email_verified_at)
+                            <span class="badge badge-success">Verified</span>
+                            @endisset
                     </div>
                     <!--end::Col-->
                 </div>
