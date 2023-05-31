@@ -24,9 +24,9 @@ class AdObserver
      * @param  \App\Models\Ad  $ad
      * @return void
      */
-    public function updated(Ad $ad)
+    public function updating(Ad $ad)
     {
-        //
+        $ad->status_moderation_id = StatusEnum::STATUS_MODERATION_PROCESSING_ID->value;
     }
 
     /**

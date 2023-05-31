@@ -51,6 +51,30 @@ License: For each use you must have a valid license purchased only from above li
                 <div class="hover-scroll-overlay-y my-5 my-lg-5" id="kt_aside_menu_wrapper" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer" data-kt-scroll-wrappers="#kt_aside_menu" data-kt-scroll-offset="0">
                     <!--begin::Menu-->
                     <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true" data-kt-menu-expand="false">
+
+                        <div class="menu-item">
+                            <div class="menu-content pt-8 pb-2">
+                                <span class="menu-section text-muted text-uppercase fs-8 ls-1">Admin panel</span>
+                            </div>
+                        </div>
+                        <div class="menu-item {{ Request::routeIs('admin.dashboard') ? 'here show' : '' }}  menu-accordion">
+                            <a href="{{route('admin.dashboard')}}" class="menu-link">
+										<span class="menu-icon">
+											<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
+											<span class="svg-icon svg-icon-2">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+													<rect x="2" y="2" width="9" height="9" rx="2" fill="black"></rect>
+													<rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black"></rect>
+													<rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black"></rect>
+													<rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="black"></rect>
+												</svg>
+											</span>
+                                            <!--end::Svg Icon-->
+										</span>
+                                <span class="menu-title">Dashboard</span>
+                            </a>
+                        </div>
+
                         <div class="menu-item">
                             <div class="menu-content pt-8 pb-2">
                                 <span class="menu-section text-muted text-uppercase fs-8 ls-1">Crud</span>
@@ -70,6 +94,23 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--end::Svg Icon-->
 										</span>
                                 <span class="menu-title">Users</span>
+                            </a>
+                        </div>
+
+                        <div class="menu-item {{ Request::routeIs('admin.request.*') ? 'here show' : '' }}  menu-accordion">
+                            <a href="{{route('admin.request.index')}}" class="menu-link">
+										<span class="menu-icon">
+											<!--begin::Svg Icon | path: icons/duotune/communication/com013.svg")}}-->
+                                            <span class="svg-icon svg-icon-2"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo8/dist/../src/media/svg/icons/Layout/Layout-top-panel-3.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24"/>
+                                                    <path d="M3,4 L20,4 C20.5522847,4 21,4.44771525 21,5 L21,7 C21,7.55228475 20.5522847,8 20,8 L3,8 C2.44771525,8 2,7.55228475 2,7 L2,5 C2,4.44771525 2.44771525,4 3,4 Z M3,10 L13,10 C13.5522847,10 14,10.4477153 14,11 L14,19 C14,19.5522847 13.5522847,20 13,20 L3,20 C2.44771525,20 2,19.5522847 2,19 L2,11 C2,10.4477153 2.44771525,10 3,10 Z" fill="#000000"/>
+                                                    <rect fill="#000000" opacity="0.3" x="16" y="10" width="5" height="10" rx="1"/>
+                                                </g>
+                                            </svg><!--end::Svg Icon--></span>
+                                            <!--end::Svg Icon-->
+										</span>
+                                <span class="menu-title">Requests</span>
                             </a>
                         </div>
 
@@ -3367,9 +3408,7 @@ License: For each use you must have a valid license purchased only from above li
 <!--end::Modals-->
 <!--begin::Javascript-->
 
-@isset($script)
-    {{$script}}
-@endisset
+
 <script>var hostUrl = "{{asset("adminFiles/assets/")}}";</script>
 <!--begin::Global Javascript Bundle(used by all pages)-->
 <script src="{{asset("adminFiles/assets/plugins/global/plugins.bundle.js")}}"></script>
@@ -3392,6 +3431,10 @@ License: For each use you must have a valid license purchased only from above li
 <script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
 @livewire('livewire-ui-modal')
 @livewireScripts
+
+@isset($script)
+    {{$script}}
+@endisset
 </body>
 <!--end::Body-->
 </html>

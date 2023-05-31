@@ -6,7 +6,7 @@
         <div class="d-flex justify-content-between align-items-center">
             <span  class="ms-3" style=>{{__('ad.search_ad')}}</span>
             @if(Auth::user()->ad->count())
-            <span class="badge bg-primary rounded-pill">{{Auth::user()->ad->count()}}</span>
+            <span class="badge bg-primary rounded-pill">{{Auth::user()->ad()->withForModeration()->count()}}</span>
             @endif
         </div>
     </a>
@@ -14,7 +14,7 @@
         <div class="d-flex justify-content-between align-items-center">
             <span class="ms-3">{{__('ad.get_ad')}}</span>
             @if(Auth::user()->adGet->count())
-            <span class="badge bg-primary rounded-pill">{{Auth::user()->adGet->count()}}</span>
+            <span class="badge bg-primary rounded-pill">{{Auth::user()->adGet()->withForModeration()->count()}}</span>
             @endif
         </div>
     </a>

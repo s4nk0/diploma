@@ -163,7 +163,7 @@
                         searchControlProvider: 'yandex#search'
                     });
 
-                myPlacemark = new ymaps.Placemark([<?=explode(",", $get_ad->coordinates)[0]?>,<?=explode(",", $get_ad->coordinates)[1];?>], { content: '{{$get_ad->location}}', balloonContent: '{{$get_ad->location}}' });
+                myPlacemark = new ymaps.Placemark([<?=explode(",", $get_ad->coordinates)[0]?>,<?=explode(",", $get_ad->coordinates)[1];?>], { content: '{{substr($get_ad->location, 0, 10)}}', balloonContent: '{{substr($get_ad->location, 0, 10)}}' });
                 myMap.geoObjects.add(myPlacemark);
                 // Слушаем клик на карте.
                 myMap.events.add('click', function (e) {

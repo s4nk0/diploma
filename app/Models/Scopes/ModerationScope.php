@@ -41,7 +41,8 @@ class ModerationScope implements Scope
         $builder->macro('acceptModeration', function (Builder $builder) {
             $builder->withForModeration();
 
-            return $builder->update(['status_moderation_id' => StatusEnum::STATUS_MODERATION_PROCESSING_ID->value]);
+            return $builder->getModel()->updateQuietly(['status_moderation_id' => StatusEnum::STATUS_MODERATION_ACCEPTED_ID->value]);
+
         });
     }
 
@@ -50,7 +51,7 @@ class ModerationScope implements Scope
         $builder->macro('declineModeration', function (Builder $builder) {
             $builder->withForModeration();
 
-            return $builder->update(['status_moderation_id' => StatusEnum::STATUS_MODERATION_NOT_ACCEPTED_ID->value]);
+            return $builder->getModel()->updateQuietly(['status_moderation_id' => StatusEnum::STATUS_MODERATION_NOT_ACCEPTED_ID->value]);
         });
     }
 

@@ -44,6 +44,20 @@ class APISearchAdController extends Controller
         ]);
     }
 
+    public function edit($search_ad){
+        $search_ad = Ad::withForModeration()->find($search_ad);
+        $this->checkAccess('update',$search_ad);
+        return response()->json([
+            'message' => 'Search ad '.$search_ad->id,
+            'data' => [
+                $search_ad->load(['media','user','apartment_condition','gender_type','liked_users','apartment_bathrooms',
+                    'apartment_bathrooms_types','apartment_furniture','apartment_furniture_status','apartment_facilities',
+                    'apartment_bathroom_types','apartment_securities','window_directions','apartment_for'
+                ])
+            ]
+        ]);
+    }
+
     public function like(Ad $ad){
         if (!$ad->user_liked){
             $ad->liked_users()->attach(Auth::user());
@@ -110,9 +124,9 @@ class APISearchAdController extends Controller
     ],Response::HTTP_ACCEPTED);
     }
 
-    public function update(UpdateAdRequest $request, Ad $search_ad)
+    public function update(UpdateAdRequest $request, $search_ad)
     {
-
+        $search_ad = Ad::withForModeration()->find($search_ad);
         $this->checkAccess('update',$search_ad);
         $data = $request->validated();
         $search_ad->update($data);
@@ -164,8 +178,9 @@ class APISearchAdController extends Controller
         ],Response::HTTP_ACCEPTED);
     }
 
-    public function destroy(Ad $search_ad)
+    public function destroy($search_ad)
     {
+        $search_ad = Ad::withForModeration()->find($search_ad);
         $this->checkAccess('delete',$search_ad);
         $search_ad->delete();
         return response()->json([

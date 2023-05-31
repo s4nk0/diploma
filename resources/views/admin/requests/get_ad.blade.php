@@ -4,13 +4,35 @@
 
 
         <section class="card mb-3 border-grey">
-            <div class="card-header bg-white border-bottom-0">
-                <h3 class="d-flex justify-content-between">
-                    {{$get_ad->location}}
-                    @can('update',$get_ad)
-                        <div><a href="{{route('user.get_ad.edit',['get_ad'=>$get_ad])}}" title="Редактировать" class="btn btn-primary"><i class="bi bi-pencil"></i></a></div>
-                    @endif
-                </h3>
+            <div class="card-header bg-white border-bottom-0 d-flex justify-content-between">
+                <h3>{{$get_ad->location}}</h3>
+                @can('update',$get_ad)
+                    <div class="d-flex align-items-center">
+                        <a href="{{route('admin.request.get_ad.accept',['get_ad'=>$get_ad])}}" title="Принять" class="btn btn-primary me-2">
+                            <i class="bi bi-check-circle"></i>
+                        </a>
+                        <div class="dropdown-center" title="Отклонить">
+                            <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-clipboard-x-fill"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <form class="px-2 py-1" action="{{route('admin.request.get_ad.decline',['get_ad'=>$get_ad])}}" method="post">
+                                    @csrf
+                                    <div class="form-floating">
+                                        <textarea name="comment" required class="form-control" id="" cols="30" rows="5"></textarea>
+                                        <label for="comment">Комментарий</label>
+                                    </div>
+                                    <div class="text-center">
+                                        <button class="btn btn-danger mt-2 ">Отклонить</button>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                @endif
             </div>
             <div class="row g-0">
                 <div class="col-md-6">
@@ -36,24 +58,24 @@
                                         Количество комнат: {{$get_ad->rooms_count}} <br>
                                     @endif
                                     @if($get_ad->roommate_count)
-                                            Количесвто сожителей в квартире
-                                            : {{$get_ad->roommate_count}} <br>
+                                        Количесвто сожителей в квартире
+                                        : {{$get_ad->roommate_count}} <br>
                                     @endif
                                     @if($get_ad->animals !== null)
-                                            Домашние животные в квартире:
+                                        Домашние животные в квартире:
                                         @if($get_ad->animals  === 0)
-                                                Нет
-                                            @elseif($get_ad->animals  === 1)
-                                                Да
-                                            @endif
-                                            <br>
+                                            Нет
+                                        @elseif($get_ad->animals  === 1)
+                                            Да
                                         @endif
+                                        <br>
+                                    @endif
 
                                     @if($get_ad->ad_gender_type_id)
-                                            В квартире:
+                                        В квартире:
                                         {{$get_ad->gender_type->title}}
 
-                                        @endif
+                                    @endif
                                 </p>
                                 <div class="card mb-3 border-grey">
                                     <div class="card-body">
@@ -66,9 +88,7 @@
                                                 <img src="{{$get_ad->user->profile_photo_url}}" class="rounded object-fit-cover" height="72" width="72" alt="user">
                                             </div>
                                         </div>
-                                        <div class="h4"><a href="tel:{{$get_ad->phone_number}}" class="text-decoration-none text-dark me-5">{{$get_ad->phone_number}}</a>
-                                            <a href="https://wa.me/{{$get_ad->phone_number}}" target="_blank" class="text-success"><i class="bi bi-whatsapp"></i></a>
-                                        </div>
+                                        <div class="h4"><a href="tel:{{$get_ad->phone_number}}" class="text-decoration-none text-dark">{{$get_ad->phone_number}}</a></div>
                                         <div> <small><a href = "mailto:{{$get_ad->contact_email}}" class="text-decoration-none text-dark">{{$get_ad->contact_email}}</a></small></div>
                                     </div>
                                 </div>

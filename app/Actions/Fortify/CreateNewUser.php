@@ -28,7 +28,7 @@ class CreateNewUser implements CreatesNewUsers
             'phone_number' => ['nullable',Rule::unique('users'), 'regex:'.PhoneNumberEnum::REGEX->value],
             'gender_id' => ['required', 'integer', 'exists:genders,id'],
             'password' => $this->passwordRules(),
-            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
+//            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
          $user = User::create([

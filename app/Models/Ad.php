@@ -59,6 +59,7 @@ class Ad extends Model implements HasMedia
 
     protected $with = [
         'media',
+        'status_moderation',
     ];
 
 
@@ -78,6 +79,10 @@ class Ad extends Model implements HasMedia
     }
 
     protected $table = 'ad';
+
+    public function city(){
+        return $this->hasOne(City::class,'id','city_id');
+    }
 
     public function user(){
         return $this->hasOne(User::class,'id','user_id');

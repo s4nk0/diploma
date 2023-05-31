@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\ElasticSearchable;
+use App\Traits\ModerationTrait;
 use App\Traits\withModelTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,7 +14,7 @@ use Laravel\Scout\Searchable;
 
 class AdGet extends Model
 {
-    use HasFactory, SoftDeletes, Searchable, ElasticSearchable, withModelTrait;
+    use HasFactory, SoftDeletes, Searchable, ElasticSearchable, withModelTrait, ModerationTrait;
 
     protected $fillable = [
         'rooms_count',
@@ -39,6 +40,8 @@ class AdGet extends Model
         'user_liked'
     ];
 
+    protected $with = ['status_moderation'];
+
     public function getUserLikedAttribute(){
 
         if (Auth::check()){
@@ -56,6 +59,10 @@ class AdGet extends Model
 
     public function status_moderation(){
         return $this->hasOne(StatusModeration::class,'id','status_moderation_id');
+    }
+
+    public function city(){
+        return $this->hasOne(City::class,'id','city_id');
     }
 
     public function user(){

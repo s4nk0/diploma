@@ -17,7 +17,18 @@
                         </div>
                         <div class="col-9 col-sm-10 " >
                             <div class="card-body " >
-                                <div class="card-title overflow-hidden text-truncate " title="{{$data->location}}" style="max-height: 85px">{{$data->location}}</div>
+                                <div class="card-title d-flex justify-content-between" >
+                                <div title="{{$data->location}}" style="max-height: 85px" class="overflow-hidden text-truncate ">
+                                    {{$data->location}}
+                                </div>
+                                <div class="btn
+                                    {{ ($data->status_moderation_id == \App\Enums\StatusEnum::STATUS_MODERATION_ACCEPTED_ID->value) ? 'btn-success' :
+                                       (($data->status_moderation_id == \App\Enums\StatusEnum::STATUS_MODERATION_PROCESSING_ID->value) ? 'btn-warning' :
+                                       (($data->status_moderation_id == \App\Enums\StatusEnum::STATUS_MODERATION_PROCESSING_ID->value) ? 'btn-danger' : 'btn-primary')) }}
+                                        ">
+                                        {{$data->status_moderation->title}}
+                                    </div>
+                                </div>
                                 <p>Цена: <strong>{{$data->price}} ₸</strong></p>
                             </div>
                         </div>

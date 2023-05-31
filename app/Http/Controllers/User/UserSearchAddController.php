@@ -35,7 +35,7 @@ class UserSearchAddController extends Controller
     public function index()
     {
 
-        $ad = Auth::user()->ad()->paginate(5);
+        $ad = Auth::user()->ad()->withForModeration()->paginate(5);
 
         return view('user.search-ad.index', compact('ad'));
     }
@@ -102,19 +102,22 @@ class UserSearchAddController extends Controller
         if ($request->apartmentFor_ids && count($request->apartmentFor_ids)){
              $ad->apartment_for()->attach($request->apartmentFor_ids);
         }
-
+        if ($ad->status_moderation_id !== 1){
+            return redirect()->route('user.search_ad.index');
+        }
         return redirect()->route('user.search_ad.show',['search_ad'=>$ad]);
     }
 
     public function show(Ad $search_ad)
     {
-        $search_ad->update(['views'=>$search_ad->views+1]);
+        $search_ad->updateQuietly(['views'=>$search_ad->views+1]);
 
         return view('user.search-ad.show', compact('search_ad'));
     }
 
-    public function edit(Ad $search_ad)
+    public function edit($search_ad)
     {
+        $search_ad = Ad::withForModeration()->find($search_ad);
         $this->checkAccess('update',$search_ad);
         $ad_gender_types = AdGenderType::all();
         $apartmentConditions = ApartmentCondition::all();
@@ -132,9 +135,9 @@ class UserSearchAddController extends Controller
             'apartmentBathrooms','apartmentSecurities','windowDirections','apartmentFor','search_ad','ad_gender_types'));
     }
 
-    public function update(UpdateAdRequest $request, Ad $search_ad)
+    public function update(UpdateAdRequest $request, $search_ad)
     {
-
+        $search_ad = Ad::withForModeration()->find($search_ad);
         $this->checkAccess('update',$search_ad);
         $data = $request->validated();
         $search_ad->update($data);
@@ -177,11 +180,15 @@ class UserSearchAddController extends Controller
             $ad->apartment_for()->sync($request->apartmentFor_ids);
         }
 
+        if ($search_ad->status_moderation_id !== 1){
+            return redirect()->route('user.search_ad.index');
+        }
         return redirect()->route('user.search_ad.show',['search_ad'=>$search_ad]);
     }
 
-    public function destroy(Ad $search_ad)
+    public function destroy($search_ad)
     {
+        $search_ad = Ad::withForModeration()->find($search_ad);
         $this->checkAccess('delete',$search_ad);
         $search_ad->delete();
         return redirect()->route('user.search_ad.index')->with(['success'=>'Запись успешно удален!']);

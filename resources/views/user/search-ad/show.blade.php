@@ -199,7 +199,8 @@
                                                     <img src="{{$search_ad->user->profile_photo_url}}" class="rounded object-fit-contain" height="72" width="72" alt="user">
                                                 </div>
                                             </div>
-                                            <div class="h4"><a href="tel:{{$search_ad->phone_number}}" class="text-decoration-none text-dark">{{$search_ad->phone_number}}</a></div>
+                                            <div class="h4"><a href="tel:{{$search_ad->phone_number}}" class="text-decoration-none text-dark me-5">{{$search_ad->phone_number}}</a>
+                                                <a href="https://wa.me/{{$search_ad->phone_number}}" target="_blank" class="text-success"><i class="bi bi-whatsapp"></i></a></div>
                                             <div> <small><a href = "mailto:{{$search_ad->contact_email}}" class="text-decoration-none text-dark">{{$search_ad->contact_email}}</a></small></div>
                                         </div>
                                     </div>

@@ -22,7 +22,7 @@ class CheckUserProfileFields
         // Check if user is authenticated and has a profile
         if ($user) {
             // Check if all required fields are filled
-            $requiredFields = ['name', 'phone_number', 'email', 'gender_id'];
+            $requiredFields = ['name', 'email', 'gender_id'];
             foreach ($requiredFields as $field) {
                 if (empty($user->{$field})) {
                     // Redirect user to complete profile

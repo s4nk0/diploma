@@ -31,6 +31,17 @@ class APIGetAdController extends Controller
         ]);
     }
 
+    public function edit($get_ad){
+        $get_ad = AdGet::withForModeration()->find($get_ad);
+        $this->checkAccess('update',$get_ad);
+        return response()->json([
+            'message' => 'Ad get ' .$get_ad->id,
+            'data' => [
+                $get_ad->load(['user','liked_users','gender_type']),
+            ]
+        ]);
+    }
+
     public function like(AdGet $get_ad){
         if (!$get_ad->user_liked){
             $get_ad->liked_users()->attach(Auth::user());
@@ -61,8 +72,9 @@ class APIGetAdController extends Controller
         ],Response::HTTP_ACCEPTED);
     }
 
-    public function update(UpdateAdGetRequest $request, AdGet $get_ad)
+    public function update(UpdateAdGetRequest $request, $get_ad)
     {
+        $get_ad = AdGet::withForModeration()->find($get_ad);
         $this->checkAccess('update',$get_ad);
         $data = $request->validated();
         $get_ad->update($data);
@@ -76,8 +88,9 @@ class APIGetAdController extends Controller
         ],Response::HTTP_ACCEPTED);
     }
 
-    public function destroy(AdGet $get_ad)
+    public function destroy($get_ad)
     {
+        $get_ad = AdGet::withForModeration()->find($get_ad);
         $this->checkAccess('delete',$get_ad);
         $get_ad->delete();
 

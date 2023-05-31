@@ -42,6 +42,10 @@ class ElasticSearchReindex extends Command
     {
         $this->info('Indexing all ad. This might take a while...');
 
+        if (Ad::cursor()->first()){
+            $this->elasticsearch->indices()->delete(['index' => Ad::cursor()->first()->getSearchIndex()]);
+        }
+
         foreach (Ad::cursor() as $data)
         {
             $this->elasticsearch->index([
@@ -59,6 +63,9 @@ class ElasticSearchReindex extends Command
 
         $this->info('Indexing all ad_get. This might take a while...');
 
+        if (AdGet::cursor()->first()){
+            $this->elasticsearch->indices()->delete(['index' => AdGet::cursor()->first()->getSearchIndex()]);
+        }
         foreach (AdGet::cursor() as $data)
         {
 

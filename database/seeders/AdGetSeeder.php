@@ -15,6 +15,6 @@ class AdGetSeeder extends Seeder
      */
     public function run()
     {
-        AdGet::factory()->count(500)->create();
+        AdGet::factory()->count(100)->createQuietly();
     }
 }

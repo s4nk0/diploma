@@ -54,12 +54,15 @@ Route::middleware('auth:sanctum')->group(function (){
 
    Route::post('/user/search_ad/store',[APISearchAdController::class,'store']);
    Route::post('/user/search_ad/{search_ad}/update',[APISearchAdController::class,'update']);
+   Route::get('/user/search_ad/{search_ad}/edit',[APISearchAdController::class,'edit']);
    Route::post('/user/search_ad/{search_ad}/delete',[APISearchAdController::class,'destroy']);
    Route::get('/user/search_ad',[APIUserController::class,'userSearchAd']);
+   Route::get('/user/resend/email/verification',[APIUserController::class,'resendVerificationEmail']);
 
    Route::post('/user/get_ad/store',[APIGetAdController::class,'store']);
    Route::post('/user/get_ad/{get_ad}/update',[APIGetAdController::class,'update']);
    Route::post('/user/get_ad/{get_ad}/delete',[APIGetAdController::class,'destroy']);
+   Route::get('/user/get_ad/{get_ad}/edit',[APIGetAdController::class,'edit']);
 
    Route::get('/user/get_ad',[APIUserController::class,'userGetAd']);
 

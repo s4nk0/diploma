@@ -12,8 +12,18 @@
             @foreach($adGet as $data)
                 <a href="{{route('user.get_ad.edit',['get_ad'=>$data])}}" class="list-group-item list-group-item-action card mb-3 p-0" >
                     <div class="card-body " >
-                        <div class="card-title overflow-hidden text-truncate " title="{{$data->location}}" style="max-height: 85px">{{$data->location}}</div>
-                        <p title="Цена: {{$data->price_from}} ₸ - {{$data->price}} ₸">Цена: <strong>{{$data->price_from}} ₸</strong> - <strong>{{$data->price}} ₸</strong></p>
+                        <div class="card-title d-flex justify-content-between" >
+                            <div title="{{$data->location}}" style="max-height: 85px" class="overflow-hidden text-truncate ">
+                                {{$data->location}}
+                            </div>
+                            <div class="btn
+                                    {{ ($data->status_moderation_id == \App\Enums\StatusEnum::STATUS_MODERATION_ACCEPTED_ID->value) ? 'btn-success' :
+                                       (($data->status_moderation_id == \App\Enums\StatusEnum::STATUS_MODERATION_PROCESSING_ID->value) ? 'btn-warning' :
+                                       (($data->status_moderation_id == \App\Enums\StatusEnum::STATUS_MODERATION_PROCESSING_ID->value) ? 'btn-danger' : 'btn-primary')) }}
+                                ">
+                                {{$data->status_moderation->title}}
+                            </div>
+                        </div>                        <p title="Цена: {{$data->price_from}} ₸ - {{$data->price}} ₸">Цена: <strong>{{$data->price_from}} ₸</strong> - <strong>{{$data->price}} ₸</strong></p>
                     </div>
                 </a>
             @endforeach

@@ -24,9 +24,9 @@ class AdGetObserver
      * @param  \App\Models\AdGet  $adGet
      * @return void
      */
-    public function updated(AdGet $adGet)
+    public function updating(AdGet $adGet)
     {
-        //
+        $adGet->status_moderation_id = StatusEnum::STATUS_MODERATION_PROCESSING_ID->value;
     }
 
     /**

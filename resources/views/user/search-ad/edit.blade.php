@@ -408,7 +408,7 @@
                         searchControlProvider: 'yandex#search'
                     });
 
-                myPlacemark = new ymaps.Placemark([<?=explode(",", $search_ad->coordinates)[0]?>,<?=explode(",", $search_ad->coordinates)[1];?>], { content: '{{substr($search_ad->location, 0, 25)}}', balloonContent: '{{substr($search_ad->location, 0, 25)}}' });
+                myPlacemark = new ymaps.Placemark([<?=explode(",", $search_ad->coordinates)[0]?>,<?=explode(",", $search_ad->coordinates)[1];?>], { content: '{{substr($search_ad->location, 0, 15)}}', balloonContent: '{{substr($search_ad->location, 0, 15)}}' });
                 myMap.geoObjects.add(myPlacemark);
                 // Слушаем клик на карте.
                 myMap.events.add('click', function (e) {

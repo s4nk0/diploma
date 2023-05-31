@@ -24,7 +24,7 @@ class UserGetAdController extends Controller
 
     public function index()
     {
-        $adGet = Auth::user()->adGet()->paginate(5);;
+        $adGet = Auth::user()->adGet()->withForModeration()->paginate(5);
         return view('user.get-ad.index',compact('adGet'));
     }
 
@@ -43,34 +43,47 @@ class UserGetAdController extends Controller
         $data['user_id']= Auth::user()->id;
 
         $ad_get = AdGet::create($data);
+
+        if ($ad_get->status_moderation_id !== 1){
+            return redirect()->route('user.get_ad.index');
+        }
+
         return redirect()->route('user.get_ad.show',['get_ad'=>$ad_get]);
     }
 
     public function show(AdGet $get_ad)
     {
-        $get_ad->update(['views'=>$get_ad->views+1]);
+        $get_ad->updateQuietly(['views'=>$get_ad->views+1]);
        return view('user.get-ad.show',compact('get_ad'));
     }
 
-    public function edit(AdGet $get_ad)
+    public function edit($get_ad)
     {
+        $get_ad = AdGet::withForModeration()->find($get_ad);
+        $this->checkAccess('update',$get_ad);
         $cities = City::all();
         $ad_gender_types = AdGenderType::all();
         $this->checkAccess('update',$get_ad);
         return view('user.get-ad.edit',compact('get_ad','cities','ad_gender_types'));
     }
 
-    public function update(UpdateAdGetRequest $request, AdGet $get_ad)
+    public function update(UpdateAdGetRequest $request, $get_ad)
     {
+        $get_ad = AdGet::withForModeration()->find($get_ad);
         $this->checkAccess('update',$get_ad);
         $data = $request->validated();
         $get_ad->update($data);
 
+        if ($get_ad->status_moderation_id !== 1){
+            return redirect()->route('user.get_ad.index');
+        }
+
         return redirect()->route('user.get_ad.show',['get_ad'=>$get_ad]);
     }
 
-    public function destroy(AdGet $get_ad)
+    public function destroy($get_ad)
     {
+        $get_ad = AdGet::withForModeration()->find($get_ad);
         $this->checkAccess('delete',$get_ad);
         $get_ad->delete();
         return redirect()->route('user.get_ad.index')->with(['success'=>'Запись успешно удален!']);

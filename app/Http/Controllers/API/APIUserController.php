@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
@@ -25,7 +26,7 @@ class APIUserController extends Controller
 
     public function userSearchAd(){
 
-        $ad = Auth::user()->ad->paginate(5);
+        $ad = Auth::user()->ad()->withForModeration()->paginate(5);
 
         return response()->json([
             'success'=>true,
@@ -37,7 +38,7 @@ class APIUserController extends Controller
     }
 
     public function userGetAd(){
-        $adGet = Auth::user()->adGet->paginate(5);
+        $adGet = Auth::user()->adGet()->withForModeration()->paginate(5);
 
         return response()->json([
             'success'=>true,
@@ -62,6 +63,22 @@ class APIUserController extends Controller
                 $result
             ]
         ]);
+    }
+
+    public function resendVerificationEmail(Request $request){
+        if ($request->user()->hasVerifiedEmail()) {
+            return response()->json([
+                'success'=>false,
+                'message' => 'Email already verified.',
+            ],Response::HTTP_BAD_REQUEST);
+
+        }
+
+        $request->user()->sendEmailVerificationNotification();
+        return response()->json([
+            'success'=>true,
+            'message' => 'Email verification link sent on your email',
+        ],Response::HTTP_ACCEPTED);
     }
 
 }

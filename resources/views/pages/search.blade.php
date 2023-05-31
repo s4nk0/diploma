@@ -241,7 +241,7 @@
                                                 @elseif(get_class($data) == \App\Models\AdGet::class)
                                                     <span class="text-muted">{{__('ad.get_ad')}}</span>
                                                 @endif</h6>
-                                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                            <p class="card-text">{{strlen($data->description) > 125 ? substr($data->description,0,125)."..." : $data->description}}</p>
                                         </a>
                                     </div>
                                     <div class="card-text d-flex justify-content-between">

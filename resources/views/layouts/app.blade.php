@@ -144,6 +144,8 @@
             </nav>
         </header>
         <main >
+            <a href="{{route('map')}}" style="position: fixed; z-index: 1000;right: 30px;bottom: 30px" class="h1 text-danger" title="Искать на карта"><i class="bi bi-geo-alt-fill"></i></a>
+
             <div class="container-xl py-4">
             {{$slot}}
             </div>
@@ -343,6 +345,7 @@
             </footer>
         </div>
     </div>
+
     @livewire('livewire-ui-modal')
     @livewireScripts
     @isset($script)
@@ -367,10 +370,19 @@
             return "";
         }
         document.addEventListener("DOMContentLoaded", () => {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+
+            if(urlParams.get('verified') == 1){
+                Livewire.emit('openModal', 'alert.email-verification');
+                console.log(getCookie('{{\App\Enums\CookieNames::SelectedCity->value}}'));
+            }
+
             if(!getCookie('{{\App\Enums\CookieNames::SelectedCity->value}}')){
                 Livewire.emit('openModal', 'modal.city-check-question');
                 console.log(getCookie('{{\App\Enums\CookieNames::SelectedCity->value}}'));
             }
+
         });
 
 
